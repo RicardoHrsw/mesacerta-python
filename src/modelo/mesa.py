@@ -1,7 +1,8 @@
 class Mesa:
-    def __init__(self, numero, capacidade):
+    def __init__(self, numero, capacidade, estado):
         self.numero = numero
         self.capacidade = capacidade
+        self.estado = estado
 
 
     @property
@@ -12,4 +13,4 @@ class Mesa:
     def capacidade(self, valor):
         if valor <=0:
             raise ValueError("A capacidade da mesa deve ser um valor positivo.")
-        self.capacidade=valor
+        self._capacidade=valor
