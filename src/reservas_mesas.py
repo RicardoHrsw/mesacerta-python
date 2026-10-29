@@ -6,13 +6,13 @@ def resumo_reserva_mesa(nome, pessoas, estado):
         nome_validacao = "Sem identificacao"
     else:
         nome_final=nome
-    if 1 <= pessoas <= 12:
+    if pessoas_valido:
         pessoas_final = pessoas
     else:
         pessoas_final = 0  
  
     
-    if estado in ["confirmada", "pendente"]:
+    if estado_valido:
         estado_final = estado
     else:
         estado_final = "invalido"
@@ -20,11 +20,16 @@ def resumo_reserva_mesa(nome, pessoas, estado):
     return nome_final, pessoas_final, estado_final
 
 
-nome, pessoas, estado = resumo_reserva_mesa("Ana Silva", 4, "confirmada")
+def mostrar_reserva(reserva):
+    mesa = reserva.mesa
+    print(f"Mesa {mesa.numero} (capacidade: {mesa.capacidade}) | Pessoas: {reserva.num_pessoas}")
+
  
+    print(f"Identificacao: {str(reserva.cliente.nome)} | Pessoas: {reserva.num_pessoas} | Estado: {reserva.estado}")
+    print(f"{'Nome':<20} {'Pessoas':<10} {'Estado':<10}")
+    print(f"{str(reserva.cliente.nome):<20} {str(reserva.num_pessoas):<10} {str(reserva.estado):<10}")
 
-
-print(f"Identificacao: {str(nome)} | Pessoas: {pessoas} | Estado: {estado}")
-print(f"{'Nome':<20} {'Pessoas':<10} {'Estado':<10}")
-print(f"{str(nome):<20} {str(pessoas):<10} {str(estado):<10}")
-
+    if reserva.verificar_lotacao():
+        print("Reserva compatível: a mesa comporta o pedido.\n")
+    else:
+        print("Reserva recusada: o número de pessoas excede a capacidade maxima.\n")

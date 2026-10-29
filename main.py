@@ -1,25 +1,20 @@
 from src.modelo.mesa import Mesa
 from src.modelo.reserva import Reserva
+from src.reservas_mesas import mostrar_reserva
+from src.modelo.cliente import Cliente
+
+cliente_1 = Cliente("Diana")
+cliente_2 = Cliente("Tiago")
+
+mesa_1 = Mesa(1, 4, "Disponivel")
+mesa_2 = Mesa(2, 2, "Disponivel")
+
+reserva_compativel = Reserva(mesa_1, 3, cliente_1)
+reserva_excede = Reserva(mesa_2, 6, cliente_2)
+
+mostrar_reserva(reserva_compativel)
+mostrar_reserva(reserva_excede)
 
 
-def mostrar_reserva(reserva):
-    mesa = reserva.mesa
-    print(f"Mesa {mesa.numero} (capacidade: {mesa.capacidade}) | Pessoas: {reserva.num_pessoas}")
-    if reserva.verificar_lotacao():
-        print("-> Reserva compatível: a mesa comporta o pedido.\n")
-    else:
-        print("-> Reserva recusada: o número de pessoas excede a capacidade da mesa.\n")
 
 
-def main():
-    mesa = Mesa(1, 4)
-
-    reserva_compativel = Reserva(mesa, 3)
-    reserva_excede = Reserva(mesa, 6)
-
-    mostrar_reserva(reserva_compativel)
-    mostrar_reserva(reserva_excede)
-
-
-if __name__ == "__main__":
-    main()
