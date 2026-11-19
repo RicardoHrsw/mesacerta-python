@@ -14,10 +14,8 @@ def main():
 
     data_hora_reserva = datetime(2026, 11, 14, 19, 30)
 
-    reserva_compativel = Reserva(
-        mesa_1, 3, cliente_1, data_hora=data_hora_reserva, estado="confirmado")
-    reserva_excede = Reserva(mesa_2, 6, cliente_2,
-                             data_hora=data_hora_reserva, estado="pendente")
+    reserva_compativel = Reserva(mesa_1, 3, cliente_1, data_hora=data_hora_reserva, estado="confirmado")
+    reserva_excede = Reserva(mesa_2, 6, cliente_2, data_hora=data_hora_reserva, estado="pendente")
 
     mostrar_reserva(reserva_compativel)
     mostrar_reserva(reserva_excede)

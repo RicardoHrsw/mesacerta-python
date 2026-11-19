@@ -2,7 +2,7 @@ import sqlite3
 from contextlib import closing
 
 
-def criar_tabela(caminho):
+def criar_tabela(caminho="dados/mesacerta.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         with ligacao:
             ligacao.execute(
