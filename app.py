@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from src.modelo.mesa import Mesa
 from src.base_dados import criar_tabela, listar_mesas, adicionar_mesa
 

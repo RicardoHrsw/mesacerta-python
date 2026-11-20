@@ -32,3 +32,25 @@ def listar_mesas(caminho):
             "SELECT numero, capacidade, estado FROM mesas ORDER BY numero"
         )
         return cursor.fetchall()
+
+
+def adicionar_cliente(cliente, caminho):
+    with closing(sqlite3.connect(caminho)) as ligacao:
+        with ligacao:
+            ligacao.execute(
+                "INSERT INTO clientes (nome, contacto, historico) "
+                "VALUES (?, ?, ?)",
+                (cliente.nome, cliente.contacto, cliente.historico),
+            )
+
+
+def listar_clientes(caminho):
+    with closing(sqlite3.connect(caminho)) as ligacao:
+        cursor = ligacao.execute(
+            "SELECT id, nome, contacto, historico FROM clientes ORDER BY id"
+        )
+        return cursor.fetchall()
+
+
+
+
